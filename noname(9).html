@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register & Login</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .page { display: none; }
+    .active { display: block; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+
+  <div id="registerPage" class="page active">
+    <h2>Register</h2>
+    <input type="text" id="regUsername" placeholder="Username" /><br><br>
+    <input type="password" id="regPassword" placeholder="Password" /><br><br>
+    
+    <label>Gender:</label><br>
+    <input type="radio" id="male" name="gender" value="Male" />
+    <label for="male">Male</label><br>
+    <input type="radio" id="female" name="gender" value="Female" />
+    <label for="female">Female</label><br><br>
+
+    <button onclick="register()">Register</button>
+  </div>
+
+  <div id="loginPage" class="page">
+    <h2>Login</h2>
+    <input type="text" id="loginUsername" placeholder="Username" /><br><br>
+    <input type="password" id="loginPassword" placeholder="Password" /><br><br>
+    <button onclick="login()">Login</button>
+    <p id="loginError" class="error"></p>
+  </div>
+
+  <div id="successPage" class="page">
+    <h2>Welcome!</h2>
+    <p>Successfully Logged In.</p>
+  </div>
+
+  <script>
+    let registeredUser = "";
+    let registeredPass = "";
+    let registeredGender = "";
+
+    function register() {
+      const username = document.getElementById('regUsername').value;
+      const password = document.getElementById('regPassword').value;
+      const gender = document.querySelector('input[name="gender"]:checked');
+
+      if (!username || !password || !gender) {
+alert("Please fill out all fields and select gender.");
+return;
+      }
+
+      registeredUser = username;
+      registeredPass = password;
+      registeredGender = gender.value;
+
+      document.getElementById('registerPage').classList.remove('active');
+      document.getElementById('loginPage').classList.add('active');
+    }
+
+    function login() {
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+
+      if (username === registeredUser && password === registeredPass) {
+document.getElementById('loginPage').classList.remove('active');
+document.getElementById('successPage').classList# In your local folder with index.html
+git init
+git add index.html
+git commit -m "Initial commit"
+git remote add origin https://github.com/your-username/register-login-form.git
+git push -u origin master
+    .add('active');
+      } else {
+document.getElementById('loginError').innerText = "Invalid username or password.";
+      }
+    }
+  </script>
+
+</body>
+</html>
